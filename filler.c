@@ -25,108 +25,25 @@
 #include "./libft/libft.h"
 #include "filler.h"
 #include <stdio.h>
-/*
-void	translate_xy(t_game *game, char *buff)
+
+void	get_start_pos(t_game *game, t_var *var)
 {
-	while (*buff)
-		buff++;
-	buff--;
-	while (*buff)
-	{
-		if ((ft_isdigit(*buff) == 1) && (ft_isdigit(*(buff - 1)) == 0))
+	while (game->board[var->s_x])
+	{	
+		while (game->board[var->s_x][var->s_y])
+		{	
+			if (game->board[var->s_x][var->s_y] == 'X')
 				break;
-		buff--;
-	}
-	game->b_y = ft_atoi(buff);
-	buff--;
-	while (*buff)
-	{
-		if ((ft_isdigit(*buff) == 1) && (ft_isdigit(*(buff - 1)) == 0))
+			var->s_y++;
+		}
+		if (game->board[var->s_x][var->s_y] == 'X')
 			break;
-		buff--;
-	}
-	game->b_x = ft_atoi(buff);
-}
-
-void	get_board_xy(t_game *game, t_var *var)
-{
-	char	*buff;
-	int		i;
-
-	buff = (char *)ft_memalloc(sizeof(char));
-	i = 0;
-	while (i < 2)
-	{
-		get_next_line(var->fd, &var->line);
-		game->temp = ft_strjoin(buff, var->line);
-		free(buff);
-		free(var->line);
-		buff = game->temp;
-		i++;
-	}
-	translate_xy(game, buff);
-	free(game->temp);
-}
-
-void	get_board(t_game *game, t_var *var)
-{
-	int		i;
-
-	i =0;
-	get_next_line(var->fd, &var->line);
-	free(var->line);
-	game->board = (char **)ft_memalloc(sizeof(char *) * (game->b_x + 2));
-	while (i < game->b_x)
-	{
-		get_next_line(var->fd, &var->line);
-		game->board[i] = strdup(&var->line[4]);
-		free(var->line);
-		var->line = NULL;
-		i++;
+		var->s_y = 0;
+		var->s_x++;
 	}
 }
-*//*
-void	get_token_xy(t_game *game, t_var *var)
-{
-	char	*buff;
 
-	get_next_line(var->fd, &var->line);
-	game->temp = ft_strdup(var->line);
-	buff = game->temp;
-	free(var->line);
-	while (ft_isdigit(*buff) == 0)
-	{
-		buff++;
-	}
-	game->t_x = ft_atoi(buff);
-	while (*buff)
-		buff++;
-	while (1)
-	{
-		if ((ft_isdigit(*buff) == 1) && (ft_isdigit(*(buff - 1)) == 0))
-				break;
-		buff--;
-	}
-	game->t_y = ft_atoi(buff);
-	free(game->temp);
-}
 
-void	get_token(t_game *game, t_var *var)
-{
-	int		i;
-
-	i = 0;
-	game->token = (char **)ft_memalloc(sizeof(char *) * (game->t_x + 1));
-	while (i < game->t_x)
-	{
-		get_next_line(var->fd, &var->line);
-		game->token[i] = strdup(var->line);
-		free(var->line);
-		var->line = NULL;
-		i++;
-	}
-}
-*/
 int		main(void)
 {
 	t_game	game;
@@ -134,28 +51,58 @@ int		main(void)
 	int 	i;
 
 	i = 0;
+	ft_bzero(&var, sizeof(t_var));
 	var.fd = 0;
 	get_board_xy(&game, &var);
 	get_board(&game, &var);
 	get_token_xy(&game, &var);
 	get_token(&game, &var);
+	get_start_pos(&game, &var);
 
 
-	unsigned long k = 0;
-	while (k < 1999999999)
-	{
-		k++;
+	int a = 0;
+	int b = 0;
+	int x = var.s_x;
+	int y = var.s_y;
+	while (game.token[a])
+	{	
+		while (game.token[a][b])
+		{
+			if (game.token[a][b] == '*')
+			{
+				
+			}
+			else 
+				b++;	
+		{
+		b = 0;
+		a++;
 	}
+
+
+
+
+
+
+	unsigned long kk = 0;
+	while (kk < 1999999999)
+	{
+		kk++;
+	}
+
+
+	ft_putchar_fd(game.board[12][14], 2);
 	ft_putchar_fd('\n', 2);
-	ft_putnbr_fd(game.b_x, 2);
+	ft_putnbr_fd(var.s_x, 2);
 	ft_putchar_fd('\n', 2);
-	ft_putnbr_fd(game.b_y, 2);
+	ft_putnbr_fd(var.s_y, 2);
 	ft_putchar_fd('\n', 2);
 	ft_putnbr_fd(game.t_x, 2);
 	ft_putchar_fd('\n', 2);
 	ft_putnbr_fd(game.t_y, 2);
 	ft_putchar_fd('\n', 2);
 	ft_putchar_fd('\n', 2);
+
 	while (game.board[i])
 	{
 		ft_putstr_fd(game.board[i], 2);

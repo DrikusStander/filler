@@ -29,6 +29,8 @@ typedef	struct	s_var
 {
 	char	*line;
 	int		fd;
+	int	s_x;
+	int	s_y;
 }				t_var;
 
 void    translate_xy(t_game *game, char *buff);
