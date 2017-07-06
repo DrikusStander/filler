@@ -31,6 +31,7 @@ typedef	struct	s_var
 	int		fd;
 	int	s_x;
 	int	s_y;
+	int	overlap;
 }				t_var;
 
 void    translate_xy(t_game *game, char *buff);
