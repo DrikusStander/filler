@@ -1,3 +1,4 @@
-seed = 1547
-O: timedout
-../a.out: Segfault at 0
+seed = 7057
+../filler won
+Score:
+155AGAINST151

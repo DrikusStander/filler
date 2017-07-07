@@ -11,8 +11,8 @@ SRC = 	ft_isalnum.c	ft_isprint.c		ft_memchr.c			ft_memmove.c	ft_putendl.c	ft_put
 		ft_strmap.c		ft_strncpy.c		ft_strrchr.c		ft_strtrim.c	ft_lstnew.c		ft_lstdelone.c	\
 		ft_lstdel.c		ft_lstadd.c			ft_lstiter.c		ft_lstmap.c		get_next_line.c
 
-OSRC = 	ft_atoi.o		ft_itoa.o		ft_memmove.o	ft_putnbr_fd.o	ft_strcpy.o		ft_strlcat.o	ft_strnequ.o	 \
-		ft_strtrim.o	ft_bzero.o		ft_memalloc.o	ft_memset.o		ft_putstr.o		ft_strdel.o		ft_strlen.o		 \
+OSRC = 	ft_atoi.o		ft_itoa.o		ft_memmove.o	ft_putnbr_fd.o	ft_strcpy.o		ft_strlcat.o	ft_strnequ.o	\
+		ft_strtrim.o	ft_bzero.o		ft_memalloc.o	ft_memset.o		ft_putstr.o		ft_strdel.o		ft_strlen.o		\
 		ft_strnew.o		ft_tolower.o	ft_isalnum.o	ft_memccpy.o	ft_putchar.o	ft_putstr_fd.o	ft_strdup.o		\
 		ft_strmap.o		ft_strnstr.o	ft_toupper.o	ft_isalpha.o	ft_memchr.o		ft_putchar_fd.o	ft_strcat.o		\
 		ft_strequ.o		ft_strmapi.o	ft_strrchr.o	ft_isascii.o	ft_memcmp.o		ft_putendl.o	ft_strchr.o		\

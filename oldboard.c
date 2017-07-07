@@ -6,18 +6,14 @@
 /*   By: hstander <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/04 17:43:30 by hstander          #+#    #+#             */
-/*   Updated: 2017/07/07 15:08:09 by hstander         ###   ########.fr       */
+/*   Updated: 2017/07/07 07:58:09 by hstander         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void    get_board_xy(t_game *game, t_var *var)
+void    translate_xy(t_game *game, char *buff)
 {
-	char    *buff;
-
-	get_next_line(var->fd, &var->line);
-	buff = var->line;
 	while (*buff)
 		buff++;
 	buff--;
@@ -36,20 +32,28 @@ void    get_board_xy(t_game *game, t_var *var)
 		buff--;
 	}
 	game->b_x = ft_atoi(buff);
-	free(var->line);
 }
 
-void	get_player(t_game *game, t_var *var)
+void    get_board_xy(t_game *game, t_var *var)
 {
-	char *temp;
+	char    *buff;
+	int     i;
 
-	get_next_line(var->fd, &var->line);
-	if ((temp = ft_strchr(var->line, '1')) != NULL)
-		game->player = ft_atoi(temp);
-	else if ((temp = ft_strchr(var->line, '2')) != NULL)
-		game->player = ft_atoi(temp);
-	free(var->line);
+	buff = (char *)ft_memalloc(sizeof(char));
+	i = 0;
+	while (i < 2)
+	{
+		get_next_line(var->fd, &var->line);
+		game->temp = ft_strjoin(buff, var->line);
+		free(buff);
+		free(var->line);
+		buff = game->temp;
+		i++;
+	}
+	translate_xy(game, buff);
+	free(game->temp);
 }
+
 
 void    get_board(t_game *game, t_var *var)
 {
