@@ -1,6 +1,6 @@
 NAME = filler
 
-SRC = filler.c	board.c token.c	
+SRC = filler.c	board.c token.c place_token.c check_token.c get_start_pos.c	
 
 LIBS = -L./libft -lft 
 

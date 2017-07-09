@@ -6,15 +6,15 @@
 /*   By: hstander <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/04 17:43:30 by hstander          #+#    #+#             */
-/*   Updated: 2017/07/07 15:08:09 by hstander         ###   ########.fr       */
+/*   Updated: 2017/07/09 14:09:53 by hstander         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void    get_board_xy(t_game *game, t_var *var)
+void	get_board_xy(t_game *game, t_var *var)
 {
-	char    *buff;
+	char	*buff;
 
 	get_next_line(var->fd, &var->line);
 	buff = var->line;
@@ -24,7 +24,7 @@ void    get_board_xy(t_game *game, t_var *var)
 	while (*buff)
 	{
 		if ((ft_isdigit(*buff) == 1) && (ft_isdigit(*(buff - 1)) == 0))
-			break;
+			break ;
 		buff--;
 	}
 	game->b_y = ft_atoi(buff);
@@ -32,7 +32,7 @@ void    get_board_xy(t_game *game, t_var *var)
 	while (*buff)
 	{
 		if ((ft_isdigit(*buff) == 1) && (ft_isdigit(*(buff - 1)) == 0))
-			break;
+			break ;
 		buff--;
 	}
 	game->b_x = ft_atoi(buff);
@@ -41,7 +41,7 @@ void    get_board_xy(t_game *game, t_var *var)
 
 void	get_player(t_game *game, t_var *var)
 {
-	char *temp;
+	char	*temp;
 
 	get_next_line(var->fd, &var->line);
 	if ((temp = ft_strchr(var->line, '1')) != NULL)
@@ -51,11 +51,11 @@ void	get_player(t_game *game, t_var *var)
 	free(var->line);
 }
 
-void    get_board(t_game *game, t_var *var)
+void	get_board(t_game *game, t_var *var)
 {
-	int     i;
+	int		i;
 
-	i =0;
+	i = 0;
 	get_next_line(var->fd, &var->line);
 	free(var->line);
 	game->board = (char **)ft_memalloc(sizeof(char *) * (game->b_x + 2));
